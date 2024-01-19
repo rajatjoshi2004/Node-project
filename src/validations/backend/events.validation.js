@@ -1,5 +1,5 @@
 const Joi = require('joi');
-
+const { objectId } = require('../custom.validation');
 
 const create = {
   body: Joi.object().keys({
@@ -24,25 +24,27 @@ const paginate = {
 
 const get = {
   params: Joi.object().keys({
-
+  id:  Joi.string().custom(objectId),
   }),
 };
 
 const update = {
   params: Joi.object().keys({
-   
+    id: Joi.required().custom(objectId),
   }),
-
   body: Joi.object().keys({
-    title: Joi.string().required(),
-    fileName: Joi.string().required(),
-    shortContent: Joi.string().required(),
-   
+    name: Joi.string().required(),
+    date: Joi.string().required(),
+    category: Joi.string().required(),
+    status: Joi.string().required(),
+    createdBy: Joi.string().required(),
+    remarks: Joi.string().required(),
   }),
 };
 
 const destroy = {
   params: Joi.object().keys({
+  id:  Joi.string().custom(objectId),
    
   }),
 };

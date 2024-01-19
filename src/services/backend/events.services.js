@@ -1,4 +1,7 @@
 const { Events } = require("../../models/index");
+const ApiError = require("../../utils/ApiError");
+const httpStatus = require('http-status');
+
 
 /**
  * Create
@@ -27,7 +30,7 @@ const paginate = async (filter, options) => {
 /**
  * Get by id
  * @param {ObjectId} id
- * @returns {Promise<NewsAndEvent>}
+ * @returns {Promise<Events>}
  */
 const getById = async (options) => {
   return Events.findById(options);
@@ -36,7 +39,7 @@ const getById = async (options) => {
 /**
  * Get all/one
  * @param {ObjectId} id
- * @returns {Promise<NewsAndEvent>}
+ * @returns {Promise<Events>}
  */
 const find = async (query) => {
   return Events.find(query);
@@ -46,20 +49,12 @@ const find = async (query) => {
  * Update by id
  * @param {ObjectId} id
  * @param {Object} body
- * @returns {Promise<NewsAndEvent>}
+ * @returns {Promise<Events>}
  */
 const update = async (id, body) => {
-
   const item = await getById(id);
   if (!item) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Item not found');
-  }
-
-  if (fs.existsSync(`uploads/temp/${body.image}`)) {
-    await moveFile(
-      `uploads/temp/${body.image}`,
-      `uploads/news_and_events/${body.image}`
-    );
   }
 
   Object.assign(item, body);
@@ -70,7 +65,7 @@ const update = async (id, body) => {
 /**
  * Delete by id
  * @param {ObjectId} id
- * @returns {Promise<NewsAndEvent>}
+ * @returns {Promise<Events>}
  */
 const destroy = async (id) => {
   const item = await getById(id);
