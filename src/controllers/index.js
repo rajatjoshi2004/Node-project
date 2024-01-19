@@ -1,0 +1,1 @@
+module.exports.eventsController = require('./backend/events.controller');
