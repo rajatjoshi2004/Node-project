@@ -1,1 +1,1 @@
-module.exports.Events = require('./backend/events.model.mjs');
+module.exports.Events = require('./backend/events.model.js');

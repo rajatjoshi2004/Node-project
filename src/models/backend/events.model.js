@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { toJSON } = require("../plugins");
+const { toJSON , paginate} = require("../plugins");
 
 const schema = mongoose.Schema({
   name: {
@@ -18,7 +18,7 @@ const schema = mongoose.Schema({
     type: String,
     required: false,
   },
-  craetedBy: {
+  createdBy: {
     type: String,
     required: true,
   },
@@ -42,6 +42,7 @@ const schema = mongoose.Schema({
 //add plugin that converts moongoose to json
 
 schema.plugin(toJSON);
+schema.plugin(paginate);
 
 const Events = mongoose.model("Events", schema);
 

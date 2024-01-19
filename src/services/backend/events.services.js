@@ -1,5 +1,4 @@
-const { Events } = require("../../models");
-
+const { Events } = require("../../models/index");
 
 /**
  * Create

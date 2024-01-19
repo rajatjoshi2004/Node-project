@@ -4,11 +4,11 @@ const Joi = require('joi');
 const create = {
   body: Joi.object().keys({
     name: Joi.string().required(),
-    // date: Joi.string().required(),
-    // category: Joi.string().required(),
-    // status: Joi.string().required(),
-    // createdBy: Joi.string().required(),
-    // remarks: Joi.string().required(),
+    date: Joi.string().required(),
+    category: Joi.string().required(),
+    status: Joi.string().required(),
+    createdBy: Joi.string().required(),
+    remarks: Joi.string().required(),
   }),
 };
 

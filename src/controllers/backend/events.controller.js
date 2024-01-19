@@ -5,7 +5,7 @@ const catchAsync = require('../../utils/catchAsync');
 const create = catchAsync(async (req, res) => {
   try{
     const product = await eventService.create(req.body);
-    res.status({ status: true, data: product });
+    res.send({ status: true, data: product });
   }
   catch(error){
     res.send({status:false,message:error.message})
